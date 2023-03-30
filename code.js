@@ -1,11 +1,9 @@
 const githubUrl = 'https://raw.githubusercontent.com/peepoostpin/updater/main/time.txt';
-const timestampText = 'Last updated on: ';
 
 fetch(githubUrl)
   .then(response => response.text())
-  .then(text => {
-    const timestampString = text.match(new RegExp(`${timestampText}\\d{2} \\w{3} \\d{4}`, 'i'))[0];
-    const timestamp = new Date(timestampString).getTime();
+  .then(timestampString => {
+    const timestamp = parseInt(timestampString);
 
     const currentTimestamp = Date.now();
 
